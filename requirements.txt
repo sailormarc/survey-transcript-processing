@@ -1,0 +1,13 @@
+python-dotenv
+pydub
+pandas[excel]==2.2.2
+scikit-learn
+numpy==1.26
+tqdm
+openai
+deepgram-sdk
+matplotlib
+seaborn
+torch
+xgboost
+voyageai==0.2.3
