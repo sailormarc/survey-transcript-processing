@@ -23,7 +23,7 @@
 	*********************************************************************
 	
 	if "`c(username)'" == "marcocaporaletti"{
-	global path "/Users/marcocaporaletti/Dropbox/Experiment_gambling/Voices_of_Ghana"
+	global path "/Users/marcocaporaletti/Documents/GitHub/survey-transcript-processing"
 	}
 	
 	* add paths for other team members *
