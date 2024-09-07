@@ -33,7 +33,7 @@ and change the `DOTENV_PATH` variable in config.py to wherever you store the .en
 This repo replicates the project structure including an empty folders for the data, which however cannot be made publicly available. In particular, the code can't be run as is. Some of the notebooks where also edited, clearing some outputs to protect sensitive information. 
 
 ## Cleaning the audio files
-With the raw files in `data/audio`, run the script `code/python/process_raw_audios.py` with positional arguments <directory> = path of folder containing the raw audios, <dta_path> = path to cleaned qualtrics data (from the survey) in dta format, and optional argument <min_duration> = the minimum duration for a recording to be kept (defaults to 1 min). The script does the following:
+With the raw files in `data/audio`, run the script `code/python/process_raw_audios.py` with positional arguments `directory` = path of folder containing the raw audios, `dta_path` = path to cleaned qualtrics data (from the survey) in dta format, and optional argument `min_duration` = the minimum duration for a recording to be kept (defaults to 1 min). The script does the following:
 0.	extract the audio files from the correct agents 
 1.	filters phone numbers by eligibility criteria (mostly consent question from the questionnaire), and remove audios of non-eligible numbers
 2.	removes recordings below the minimum duration
