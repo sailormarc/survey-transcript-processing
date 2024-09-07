@@ -52,7 +52,9 @@ The code for transcribing and relabeling is in `code/python/transcribe_and_relab
 We leverage models from the GPT-4 family to split each text into blocks corresponding to the open-ended questions Q1-Q9. First, run the stata script `code/stata/split_transcriptions_round1.do` (this is a preprocessing step). To perform the splits for round1 ground truth, round 1 nova2, and round 2 nova2, run all cells in `code/python/split_questions.ipynb`. 
 
 **Note**: The extra step for round 1 is there for “historical” reasons (the project was started in stata). For round 2 (and eventually subsequent rounds), this step should be done as is done in `split_questions.ipynb` for the round2 calls.
+
 **Note**: it may take up to several hours to run the splitting code on the full dataset, so plan accordingly if you want to do that. 
+
 **Note**: for different questionnaires you might need to produce new examples (the current code needs one example for winners and one example for non-winners). Zero-shot prompting for question splitting (no examples) was tested and performed quite poorly.
 
 ## Text embeddings
