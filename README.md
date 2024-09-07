@@ -33,7 +33,7 @@ and change the `dotenv_path` variable in config.py to wherever you store the .en
 This repo replicates the project structure including empty folders for the data, which however cannot be made publicly available. Some of the notebooks where also edited, and some of the outputs cleared, to protect sensitive information. 
 
 ## Cleaning the audio files
-With the raw files in `../../data/audio`, run the script `process_raw_audios.py` with positional arguments <directory> = path of folder containing the raw audios, <dta_path> = path to cleaned qualtrics data (from the survey) in dta format, and optional argument <min_duration> = the minimum duration for a recording to be kept (defaults to 1 min). The script does the following:
+With the raw files in `data/audio`, run the script `code/python/process_raw_audios.py` with positional arguments <directory> = path of folder containing the raw audios, <dta_path> = path to cleaned qualtrics data (from the survey) in dta format, and optional argument <min_duration> = the minimum duration for a recording to be kept (defaults to 1 min). The script does the following:
 0.	extract the audio files from the correct agents 
 1.	filters phone numbers by eligibility criteria (mostly consent question from the questionnaire), and remove audios of non-eligible numbers
 2.	removes recordings below the minimum duration
@@ -46,10 +46,10 @@ With the raw files in `../../data/audio`, run the script `process_raw_audios.py`
 ## Transcription
 For the first round only, we obtained high-quality, human-made transcriptions, which we use as ground-truth to develop and test an automatic transcription pipeline. We tested several SOTA speech-to-text models and denoising procedures and landed on the deepgram-nova2 model. The transcriptions are postprocessed by an LLM of the GPT-4 family to improve speaker labeling and identify only 2 speakers. 
 
-The code for transcribing and relabeling is in `transcribe_and_relabel.ipynb`. It takes as input audio files as processed by the script `process_raw_audios.py`. Just run all the cells to transcribe the round 1 and round 2 audios. 
+The code for transcribing and relabeling is in `code/python/transcribe_and_relabel.ipynb`. It takes as input audio files as processed by the script `code/python/process_raw_audios.py`. Just run all the cells to transcribe the round 1 and round 2 audios. 
 
 ## Question splitting
-We leverage models from the GPT-4 family to split each text into blocks corresponding to the open-ended questions Q1-Q9. First, run the stata script `split_transcriptions_round1.do` (this is a preprocessing step). To perform the splits for round1 ground truth, round 1 nova2, and round 2 nova2, run all cells in `split_questions.ipynb`. 
+We leverage models from the GPT-4 family to split each text into blocks corresponding to the open-ended questions Q1-Q9. First, run the stata script `code/stata/split_transcriptions_round1.do` (this is a preprocessing step). To perform the splits for round1 ground truth, round 1 nova2, and round 2 nova2, run all cells in `code/python/split_questions.ipynb`. 
 
 **Note**: The extra step for round 1 is there for “historical” reasons (the project was started in stata). For round 2 (and eventually subsequent rounds), this step should be done as is done in `split_questions.ipynb` for the round2 calls.
 **Note**: it may take up to several hours to run the splitting code on the full dataset, so plan accordingly if you want to do that. 
@@ -58,4 +58,4 @@ We leverage models from the GPT-4 family to split each text into blocks correspo
 ## Text embeddings
 To have a first look at the quality and signal in the data, we do some visualizations and analysis based on text embeddings. We use text-embedding models from openai and voyageai, which should be trained to map “semantically similar” texts to similar (in L^2 or cosine similarity) vectors in the (~1500 dimensional) embedding space. 
 
-The notebook `create_datasets_for_visualization_analysis.ipynb` contains the code to generate the embeddings from the split transcriptions, put everything into a dataframe and save in pkl format. The three datasets obtained this way are saved in `../../data/transcription_all/embeddings` and can be used for visualization and analysis.  
+The notebook `code/python/create_datasets_for_visualization_analysis.ipynb` contains the code to generate the embeddings from the split transcriptions, put everything into a dataframe and save in pkl format. The three datasets obtained this way are saved in `data/transcription_all/embeddings` and can be used for visualization and analysis.  
