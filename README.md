@@ -1,10 +1,9 @@
-# Introduction
+# Insights from open-ended interviews
 The code in this project manipulates a dataset consisting of open-ended interviews, conducted in English and recorded through the in-house call center infrastructure of a partner company. 
 The data have been collected via qualitative phone surveys with open-ended questions over two (pilot) experimental rounds. The survey questionnaire contains 7-9 question (depending on the client), with minor modifications between the two rounds. 
 
 This readme file describes the pipeline in place to transcribe the interviews using speech-to-text models, split the transcriptions into blocks containing the distinct questions, performing text embedding and creating datasets for visualization and analysis.
 
-**Note**: this is a prototype rather than a final product, so while rather clean, the code structure is not quite optimized.
 
 ## Requirements
 The libraries needed to run the python code are in requirements.txt. These are mostly standard data science libraries, plus 
@@ -28,6 +27,10 @@ DEEPGRAM_API_KEY = "YOUR_DEEPGRAM_API_KEY"
 VOYAGE_API_KEY = "YOUR_VOYAGE_API_KEY"
 ```
 and change the `dotenv_path` variable in config.py to wherever you store the .env file (not on dropbox cause you don’t want it to be synced). 
+
+## A word on the data
+
+This repo replicates the project structure including empty folders for the data, which however cannot be made publicly available. Some of the notebooks where also edited, and some of the outputs cleared, to protect sensitive information. 
 
 ## Cleaning the audio files
 With the raw files in `../../data/audio`, run the script `process_raw_audios.py` with positional arguments <directory> = path of folder containing the raw audios, <dta_path> = path to cleaned qualtrics data (from the survey) in dta format, and optional argument <min_duration> = the minimum duration for a recording to be kept (defaults to 1 min). The script does the following:
