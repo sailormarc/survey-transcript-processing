@@ -34,12 +34,12 @@ This repo replicates the project structure including an empty folders for the da
 
 ## Cleaning the audio files
 With the raw files in `data/audio`, run the script `code/python/process_raw_audios.py` with positional arguments `directory` = path of folder containing the raw audios, `dta_path` = path to cleaned qualtrics data (from the survey) in dta format, and optional argument `min_duration` = the minimum duration for a recording to be kept (defaults to 1 min). The script does the following:
-0.	extract the audio files from the correct agents 
-1.	filters phone numbers by eligibility criteria (mostly consent question from the questionnaire), and remove audios of non-eligible numbers
-2.	removes recordings below the minimum duration
-3.	converts to .wav
-4.	concatenates calls to the same phone number, in chronological order
-5.	moves all resulting audio files to the voicefiles folder. Final files are called by the phone number of the customer, and a few folder are left with phone numbers with multiple recordings. These folders are a byproduct of the script and can be removed. 
+1.	extract the audio files from the correct agents 
+2.	filters phone numbers by eligibility criteria (mostly consent question from the questionnaire), and remove audios of non-eligible numbers
+3.	removes recordings below the minimum duration
+4.	converts to .wav
+5.	concatenates calls to the same phone number, in chronological order
+6.	moves all resulting audio files to the voicefiles folder. Final files are called by the phone number of the customer, and a few folder are left with phone numbers with multiple recordings. These folders are a byproduct of the script and can be removed. 
 
 **Note**: if you want to keep a copy of the raw audios, make a copy first because the script that processes the folder with the audios is in-place.
 
