@@ -31,7 +31,6 @@ from tenacity import retry, stop_after_attempt, wait_fixed, retry_if_exception_t
 import signal
 
 # Libraries for t-SNE visualization
-
 from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
@@ -546,8 +545,8 @@ def construct_user_prompt(segments_dict, transcription):
         # ""Hello, my name is John Doe. I have 5 years of experience in software development.""
     """
 
-    segments_text = "\n".join( [ f'Block {i+1}: ' + f'topic = {segments_dict[i]['topic']}' + 
-        (f', question text = {segments_dict[i]['question_text']}.' if segments_dict[i]['question_text'] != "" else '.') 
+    segments_text = "\n".join( [ f'Block {i+1}: ' + f"topic = {segments_dict[i]['topic']}" + 
+        (f", question text = {segments_dict[i]['question_text']}." if segments_dict[i]['question_text'] != "" else '.') 
         for i in range(len(segments_dict)) ] )
     
     prompt = segments_text + '\nThe text begins on the following line.\n\n"""' + transcription + '"""'
