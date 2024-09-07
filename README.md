@@ -26,7 +26,7 @@ OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"
 DEEPGRAM_API_KEY = "YOUR_DEEPGRAM_API_KEY"
 VOYAGE_API_KEY = "YOUR_VOYAGE_API_KEY"
 ```
-and change the `dotenv_path` variable in config.py to wherever you store the .env file (not on dropbox cause you don’t want it to be synced). 
+and change the `DOTENV_PATH` variable in config.py to wherever you store the .env file (not on dropbox cause you don’t want it to be synced). 
 
 ## A word on the data
 
